@@ -8,8 +8,8 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
-            url: 'http://laravelwordpress.local'
-            host: localhost
+            url: 'http://web'
+            host: selenium
             browser: firefox
             port: 4444
             window_size: 1366x768

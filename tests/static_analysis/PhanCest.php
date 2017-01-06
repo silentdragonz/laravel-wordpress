@@ -15,25 +15,25 @@ class PhanCest
     protected $phan = '${PWD}/vendor/bin/phan';
 
     /**
-     * @param Static_analsysTester $I
+     * @param Static_analysisTester $I
      */
-    public function _before(Static_analsysTester $I)
+    public function _before(Static_analysisTester $I)
     {
-        $I->runShellCommand('if [ ! -f "'.$this->phan.'" ]; then ./composer.phar require etsy/phan --dev --no-scripts; fi;');
+        $I->runShellCommand('if [ ! -f "'.$this->phan.'" ]; then composer require etsy/phan --dev --no-scripts; fi;');
     }
 
     /**
-     * @param Static_analsysTester $I
+     * @param Static_analysisTester $I
      */
-    public function _after(Static_analsysTester $I)
+    public function _after(Static_analysisTester $I)
     {
         $I->runShellCommand('if [ -f "'.$this->log.'" ]; then rm -f '.$this->log.'; fi;');
     }
 
     /**
-     * @param Static_analsysTester $I
+     * @param Static_analysisTester $I
      */
-    public function checkStaticAnalysisWithPhan(Static_analsysTester $I)
+    public function checkStaticAnalysisWithPhan(Static_analysisTester $I)
     {
         $I->wantTo('check the code with Phan static Analysis tool');
         $I->runShellCommand("{$this->phan} >> {$this->log}");
